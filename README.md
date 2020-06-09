@@ -26,7 +26,7 @@
   * webpack.config.js : 是一个node模块，返回一个 json 格式的配置信息对象
 	
 ### 2、开启项目
-* 初始化项目：
+* 初始化项目：npm init -y
   * 生成package.json文件
       ```   
       {
