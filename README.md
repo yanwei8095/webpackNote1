@@ -413,7 +413,7 @@
   module.exports = {
     "plugins": {
       "autoprefixer": {
-        "browsers": [
+        "overrideBrowserslist": [
           "ie >= 8",
           "ff >= 30",
           "chrome >= 34",
