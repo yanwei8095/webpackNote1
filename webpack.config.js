@@ -1,6 +1,7 @@
 /* webpack的配置模块 */
 const {resolve}=require("path")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 module.exports={
 	// 入口
 	entry:"./src/js/app.js",
@@ -39,7 +40,7 @@ module.exports={
 							options: {
 								limit: 8192, //若图片小于8kb就做base64处理
 								//所有options都可以配置publicPath
-								publicPath: "../build/images", //修改图片的url路径
+								publicPath: "./images", //修改图片的url路径
 								outputPath: "/images", //图片的输出路径
 								name: "[hash:8].[ext]"
 							}
@@ -82,8 +83,17 @@ module.exports={
 	plugins: [
 		new HtmlWebpackPlugin({
 			template:"./src/index.html",//以指定HTML为模板，创建新的HTML文件(含有之前htnl的结构，引入打包后生成的js,css，图片等资源)
-		})
+		}),
+		new webpack.NamedModulesPlugin(),
+		new webpack.HotModuleReplacementPlugin()
 	],
 	// 模式
-	mode:"development"
+	mode:"development",
+	// 开发服务器，自动编译，自动打开浏览器，自动刷新
+	 devServer: {
+		 contentBase: './build',//要运行的项目根目录
+		 open:true,//自动打开浏览器
+		 port:3000,//监测的端口号
+		 hot: true//模块热替换，实现局部刷新
+	 },
 }
