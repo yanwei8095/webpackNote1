@@ -7,7 +7,7 @@ module.exports={
 	entry:"./src/js/app.js",
 	// 出口
 	output:{
-		filename: "js/[name].js", //文件名称
+		filename: "./js/[name].js", //文件名称
 		path: resolve(__dirname, "build") //输出路径，__dirname-->webpack_note
 	},
 	// loader
