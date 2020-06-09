@@ -1,0 +1,9 @@
+body {
+  width: 800px;
+  height: 800px;
+  background: rgba(212, 119, 119, 0.411);
+  display: flex;
+}
+body .inner {
+  border: 1px solid;
+}
