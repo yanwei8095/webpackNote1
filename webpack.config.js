@@ -61,10 +61,20 @@ module.exports={
 				test: /\.(html)$/,
 				use: {
 					loader: 'html-loader',
-					options: {
-						// attrs: [':data-src']
-					}
+					// options: {
+					// 	// attrs: [':data-src']
+					// }
 				}
+			},
+			{
+				loader:'file-loader',
+				// exclude:[/\.js$/,/\.html$/,/\.json$/,/\.less$/],
+				test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+				options: {
+						outputPath:'media',
+						name:'[hash:8].[ext]',
+					}
+				
 			}
 		]
 	},
