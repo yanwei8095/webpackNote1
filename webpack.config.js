@@ -1,6 +1,6 @@
 /* webpack的配置模块 */
-
 const {resolve}=require("path")
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports={
 	// 入口
 	entry:"./src/js/app.js",
@@ -56,11 +56,24 @@ module.exports={
 							}
 						}
 					]
+			},
+			{
+				test: /\.(html)$/,
+				use: {
+					loader: 'html-loader',
+					options: {
+						// attrs: [':data-src']
+					}
+				}
 			}
 		]
 	},
 	// plugins插件
-	plugins:[],
+	plugins: [
+		new HtmlWebpackPlugin({
+			template:"./src/index.html",//以指定HTML为模板，创建新的HTML文件(含有之前htnl的结构，引入打包后生成的js,css，图片等资源)
+		})
+	],
 	// 模式
 	mode:"development"
 }
