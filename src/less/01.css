@@ -1,0 +1,13 @@
+.box {
+  width: 500px;
+  height: 400px;
+  background: orange;
+  background-image: url("../images/1.jpg");
+  background-repeat: no-repeat;
+  background-position: 20% 20%;
+}
+.box .inner {
+  width: 300px;
+  height: 300px;
+  border: 1px solid;
+}

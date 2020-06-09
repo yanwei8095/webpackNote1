@@ -6,4 +6,7 @@ body {
 }
 body .inner {
   border: 1px solid;
+  background-image: url("../images/2.jpeg");
+  background-repeat: no-repeat;
+  background-position: 30% 20%;
 }
