@@ -447,6 +447,7 @@
  
 ### 18、图片压缩
 * 安装loader
+* npm安装失败时，使用cnpm进行安装
 	* npm install img-loader imagemin-gifsicle imagemin-mozjpeg imagemin-pngquant imagemin-svgo imagemin --save-dev 
 * 配置loader
   ```
@@ -495,18 +496,19 @@
 * 修改插件配置
   ```
   new HtmlWebpackPlugin({
-    template: './src/index.html',
+    template: './src/index.html'，
+	minify:false或者
     minify: {
-      removeComments: true,
-      collapseWhitespace: true,
-      removeRedundantAttributes: true,
-      useShortDoctype: true,
-      removeEmptyAttributes: true,
-      removeStyleLinkTypeAttributes: true,
-      keepClosingSlash: true,
-      minifyJS: true,
-      minifyCSS: true,
-      minifyURLs: true,
+      removeComments: true,//移除注释
+		 	collapseWhitespace: true,//移除空格/换行符
+		 	removeRedundantAttributes: true,//移除默认属性
+		 	useShortDoctype: true,//使用HTML5的Docutype
+		 	removeEmptyAttributes: true,//移除空的属性
+		 	removeStyleLinkTypeAttributes: true,//移除type="text/css"属性
+		 	keepClosingSlash: true,//给单标签加上结束符
+		 	minifyJS: true,//最小化script中的js
+		 	minifyCSS: true,//最小化style中css
+		 	minifyURLs: true,//缩小url,使用相对路径
     }
   })
   ```
