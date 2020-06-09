@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 module.exports={
 	// 入口
 	entry:"./src/js/app.js",
@@ -42,7 +43,7 @@ module.exports={
 						} */
 					]
 					},
-					 {
+					 /* {
 						test: /\.(png|jpe?g|gif)$/,
 						use: [{
 							loader: 'url-loader',
@@ -51,9 +52,47 @@ module.exports={
 								//所有options都可以配置publicPath
 								// publicPath: "./images", //修改图片的url路径
 								// outputPath: "/images", //图片的输出路径
-								name: "image/[name].[hash:8].[ext]"
+								name: "images/[name].[hash:8].[ext]"
 							}
 						}]
+					}, */
+					{
+						test: /\.(png|jpe?g|gif|svg)$/,
+						use: [{
+								loader: 'url-loader',
+								options: {
+									limit: 8 * 1024, // 8kb大小以下的图片文件都用base64处理
+									name: 'images/[name].[hash:8].[ext]'
+								}
+							},
+							{
+								loader: 'img-loader',
+								options: {
+									plugins: [
+										require('imagemin-gifsicle')({
+											interlaced: false
+										}),
+										require('imagemin-mozjpeg')({
+											progressive: true,
+											arithmetic: false
+										}),
+										require('imagemin-pngquant')({
+											floyd: 0.5,
+											speed: 2
+										}),
+										require('imagemin-svgo')({
+											plugins: [{
+													removeTitle: true
+												},
+												{
+													convertPathData: false
+												}
+											]
+										})
+									]
+								}
+							}
+						]
 					},
 						{
 							test: /\.js$/,
@@ -65,6 +104,7 @@ module.exports={
 								}
 							}
 						}
+						
 					]
 			},
 			{
