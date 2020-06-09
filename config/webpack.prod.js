@@ -3,6 +3,7 @@ const {resolve}=require("path")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports={
 	// 入口
 	entry:"./src/js/app.js",
@@ -96,7 +97,12 @@ module.exports={
 		new MiniCssExtractPlugin({
 			filename: 'css/[name].[hash:8].css',
       chunkFilename: 'css/[id].[hash:8].css'
-		})
+		}),
+		new OptimizeCssAssetsPlugin({
+      cssProcessorPluginOptions: {
+        preset: ['default', { discardComments: { removeAll: true } }]
+      }
+    })
 	],
 	// 模式
 	mode:"production"//生产环境
