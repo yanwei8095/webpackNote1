@@ -8,7 +8,7 @@ import data from "../json/data";
 import "../less/01.less";
 import "../less/02.less"
 
-console.log(add(5,3));
+console.log(add(5,6));
 console.log(sum(1,2,3,4,5));
 console.log(mul(2,6));
 console.log(name,age);

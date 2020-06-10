@@ -9,7 +9,7 @@
   background: orange;
   background-image: url("../images/1.jpg");
   background-repeat: no-repeat;
-  background-position: 20% 20%;
+  background-position: 30% 20%;
 }
 .box .inner {
   width: 300px;

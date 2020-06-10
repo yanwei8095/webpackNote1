@@ -11,10 +11,10 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
 	// 入口
-	entry: "./src/js/app.js",
+	entry: {main:"./src/js/app.js"},
 	// 出口
 	output: {
-		filename: "js/[name].[hash:8].js", //文件名称
+		filename: "js/[name].[contenthash:8].js", //文件名称
 		path: resolve(__dirname, "../dist"), //输出路径，__dirname-->webpack_note
 		publicPath: '/', //所有输出文件的公共路径
 	},
@@ -139,8 +139,8 @@ module.exports = {
 		new CleanWebpackPlugin(),
 		// 提取css为一个单独的文件
 		new MiniCssExtractPlugin({
-			filename: 'css/[name].[hash:8].css',
-			chunkFilename: 'css/[id].[hash:8].css'
+			filename: 'css/[name].[contenthash:8].css',
+			// chunkFilename: 'css/[id].[hash:8].css'
 		}),
 		new OptimizeCssAssetsPlugin({
 			cssProcessorPluginOptions: {
